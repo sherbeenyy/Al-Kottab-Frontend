@@ -33,5 +33,20 @@ class AppTheme {
       labelMedium: TextStyle(fontFamily: 'NotoKufiArabic', fontWeight: FontWeight.w400),
       labelSmall: TextStyle(fontFamily: 'NotoKufiArabic', fontWeight: FontWeight.w300),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Color(0xFF16226F), // Border color when focused
+          width: 2.0, 
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.grey, 
+        ),
+      ),
+      hintStyle: TextStyle(color: Colors.grey),
+      floatingLabelStyle: TextStyle(color: Color(0xFF16226F)), 
+    ),
   );
 }
