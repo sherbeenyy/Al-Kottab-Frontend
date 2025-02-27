@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:frontend/services/student/student.dart';
+import 'package:frontend/services/student/studentApiSchema.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'studentApi.dart';
@@ -45,15 +46,15 @@ class StudentServices {
     return null;
   }
 
-  Future<StudentSnackBar> editStudent(Student student) async {
+  Future<StudentSnackBar> editStudent(EditStudentRequest request) async {
     try {
       // Get the current user
       User? user = _auth.currentUser;
 
       if (user != null) {
         // Convert the Student object to a map
-        http.Response response = await _studentApi
-            .editStudent(student.toFirebaseMap()); // Pass the uid explicitly
+        http.Response response =
+            await _studentApi.editStudent(request); // Pass the uid explicitly
 
         StudentResponse studentResponse = StudentResponse.fromJson(
             jsonDecode(response.body), response.statusCode);

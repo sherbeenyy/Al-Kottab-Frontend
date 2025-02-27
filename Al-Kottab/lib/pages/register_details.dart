@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/pages/home_page.dart';
 import 'package:frontend/services/student/student.dart';
+import 'package:frontend/services/student/studentApiSchema.dart';
 import 'package:frontend/services/student/studentServices.dart';
 import 'package:frontend/widgets/snack_bar.dart';
 
@@ -35,19 +36,17 @@ class _RegisterDetailsState extends State<RegisterDetails> {
       return;
     }
 
-    Student student = Student(
-      email: user.email ?? '',
-      uid: user.uid,
+    EditStudentRequest request = EditStudentRequest(
       firstName: firstNameController.text,
       lastName: lastNameController.text,
+      phoneNumber: phoneController.text,
       ageRange: selectedAge,
       gender: selectedGender,
       nationality: selectedNationality,
-      phoneNumber: phoneController.text,
       level: selectedLevel,
     );
 
-    StudentSnackBar response = await studentServices.editStudent(student);
+    StudentSnackBar response = await studentServices.editStudent(request);
     if (response.success) {
       setState(() {
         isLoading = true;
