@@ -27,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         isLoading = true;
       });
+      print('wadyyyyyy');
       showSnackBar(context, response.message, response.success);
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => HomePage()));
@@ -139,8 +140,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: Text(
                 'تسجيل الدخول',
-                style: TextStyle(fontSize: 18 , color: Colors.white),
-              
+                style: TextStyle(fontSize: 18, color: Colors.white),
               ),
             ),
           ],
