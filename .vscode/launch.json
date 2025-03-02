@@ -9,7 +9,7 @@
             "cwd": "Al-Kottab",
             "request": "launch",
             "type": "dart",
-            "args": ["--no-enable-impeller", "--dart-define=FLAVOR=prod"]
+            "args": ["--no-enable-impeller", "--dart-define=FLAVOR=dev"]
         },
         {
             "name": "Al-Kottab (profile mode)",
