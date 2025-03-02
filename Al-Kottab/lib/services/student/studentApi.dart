@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:frontend/services/student/studentApiSchema.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import '../api_environment.dart';
 
 class StudentApi {
   Future<String?> getIdToken() async {
@@ -16,7 +19,8 @@ class StudentApi {
   Future<http.Response> getCurrentStudent(String uid) async {
     String? token = await getIdToken(); // Await the future
     return http.get(
-      Uri.parse('http://10.0.2.2:8080/api/student/getCurrentStudent'),
+      Uri.parse(
+          environment['baseUrl'].toString() + '/student/getCurrentStudent'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer $token',
@@ -28,7 +32,7 @@ class StudentApi {
     String? token = await getIdToken(); // Await the future
 
     return http.put(
-      Uri.parse('http://10.0.2.2:8080/api/student/editStudent'),
+      Uri.parse(environment['baseUrl'].toString() + '/student/editStudent'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer $token',

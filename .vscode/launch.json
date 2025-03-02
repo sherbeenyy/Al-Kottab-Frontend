@@ -4,28 +4,28 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
-        
-    
         {
-            "name": "Al-Kottab",
+            "name": "Al-Kottab (dev)",
             "cwd": "Al-Kottab",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": ["--no-enable-impeller", "--dart-define=FLAVOR=prod"]
         },
         {
             "name": "Al-Kottab (profile mode)",
             "cwd": "Al-Kottab",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "args": ["--no-enable-impeller", "--dart-define=FLAVOR=prod"]
         },
         {
             "name": "Al-Kottab (release mode)",
             "cwd": "Al-Kottab",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "args": ["--no-enable-impeller", "--dart-define=FLAVOR=prod"]
         }
     ]
 }

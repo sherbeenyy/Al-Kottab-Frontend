@@ -21,9 +21,16 @@ class StudentServices {
         // Fetched the student document from Firestore using the user's UID
 
         http.Response response = await _studentApi.getCurrentStudent(user.uid);
-
-        StudentResponse studentResponse = StudentResponse.fromJson(
-            jsonDecode(response.body), response.statusCode);
+        late StudentResponse studentResponse;
+        try {
+          studentResponse = StudentResponse.fromJson(
+              jsonDecode(response.body), response.statusCode);
+          print('Response: ${response.body}');
+        } catch (e) {
+          print('Error parsing student response: $e');
+          print('Incoming response: ${response.body}');
+          return null;
+        }
 
         if (studentResponse.student != null) {
           // Convert the Firestore document to a Student object
@@ -56,8 +63,17 @@ class StudentServices {
         http.Response response =
             await _studentApi.editStudent(request); // Pass the uid explicitly
 
-        StudentResponse studentResponse = StudentResponse.fromJson(
-            jsonDecode(response.body), response.statusCode);
+        late StudentResponse studentResponse;
+        try {
+          studentResponse = StudentResponse.fromJson(
+              jsonDecode(response.body), response.statusCode);
+          print('Response: ${response.body}');
+        } catch (e) {
+          print('Error parsing student response: $e');
+          print('Incoming response: ${response.body}');
+          return StudentSnackBar(
+              success: false, message: 'Error parsing student response: $e');
+        }
 
         if (studentResponse.statusCode == 200) {
           return StudentSnackBar(
