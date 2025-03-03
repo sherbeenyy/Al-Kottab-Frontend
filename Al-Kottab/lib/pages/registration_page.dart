@@ -22,20 +22,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
   bool isLoading = false;
 
   void handleRegister() async {
-    Student student = Student(
-      email: emailController.text,
-      uid: '',
-      password: passwordController.text,
-      firstName: null,
-      lastName: null,
-      ageRange: null,
-      gender: null,
-      nationality: null,
-      phoneNumber: null,
-      level: null,
-    );
-    AuthResponse response =
-        await AuthServices().registerStudent(student: student);
+    AuthResponse response = await AuthServices().registerStudent(
+        email: emailController.text, password: passwordController.text);
     if (response.success) {
       setState(() {
         isLoading = true;
@@ -57,7 +45,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: Text('إنشاء حساب للطالب'),
-
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),

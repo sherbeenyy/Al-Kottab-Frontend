@@ -40,4 +40,17 @@ class StudentApi {
       body: jsonEncode(request.toMap()),
     );
   }
+
+  Future<http.Response> registerStudent(String email, String password) async {
+    return http.post(
+      Uri.parse(environment['baseUrl'].toString() + '/student/registerStudent'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{
+        'email': email,
+        'password': password,
+      }),
+    );
+  }
 }

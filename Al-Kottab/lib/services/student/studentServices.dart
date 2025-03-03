@@ -107,6 +107,7 @@ class StudentResponse {
   final String? details;
   final Map<String, dynamic>? student;
   final List<Map<String, dynamic>>? studentList;
+  final String? customToken;
 
   StudentResponse({
     required this.statusCode,
@@ -114,6 +115,7 @@ class StudentResponse {
     this.details,
     this.student,
     this.studentList,
+    this.customToken,
   });
   factory StudentResponse.fromJson(Map<String, dynamic> json, int statusCode) {
     return StudentResponse(
@@ -122,6 +124,7 @@ class StudentResponse {
       details: json['details'],
       student: json['student'],
       studentList: json['studentList'],
+      customToken: json['customToken'],
     );
   }
 }
